@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  STARTUP PATH — STEP 0: the manifest.
+  Android reads this file to know what's in the app (like app.json + the
+  "main" field in package.json for RN). Two things matter for startup:
+    1. <application android:name=".QuickNotesApp">  → the class created first (QuickNotesApp.kt)
+    2. <activity> with MAIN + LAUNCHER              → the screen opened when the user taps
+                                                     the app icon (MainActivity.kt)
+-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -21,3 +29,15 @@
     </application>
 
 </manifest>
+<!--    AndroidManifest.xml        STEP 0  lists the app's parts (like app.json)-->
+<!--    ↓-->
+<!--    QuickNotesApp.kt           STEP 1  runs first; sets up Hilt (no UI)-->
+<!--    ↓-->
+<!--    MainActivity.kt            STEP 2  the UI starting point (like index.js + registerComponent)-->
+<!--    ↓ setContent { ... }-->
+<!--    QuickNotesTheme            Theme.kt (like a <ThemeProvider>)-->
+<!--↓-->
+<!--QuickNotesNavGraph         NavGraph.kt  STEP 3  (like <NavigationContainer> + <Stack.Navigator>)-->
+<!--    ├─ "notes_list"  → NotesListScreen.kt   (home)-->
+<!--    ├─ "note_edit"   → NoteEditScreen.kt-->
+<!--    └─ "users_demo"  → UsersScreen.kt-->

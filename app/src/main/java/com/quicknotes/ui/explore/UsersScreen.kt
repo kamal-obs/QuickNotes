@@ -30,6 +30,8 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
+// SCREEN: API demo (fetches users over the network). Route: USERS_DEMO in ui/navigation/NavGraph.kt.
+// Reached from the "API Demo" button in NotesListScreen's top bar.
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun UsersScreen(

@@ -54,6 +54,9 @@ private val DarkColorScheme = darkColorScheme(
     onError = Red900
 )
 
+// Wraps the whole app (see MainActivity.setContent), like a <ThemeProvider>.
+// Any composable inside can read MaterialTheme.colorScheme / .typography,
+// and LocalTagColors.current, without receiving them as props.
 @Composable
 fun QuickNotesTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),

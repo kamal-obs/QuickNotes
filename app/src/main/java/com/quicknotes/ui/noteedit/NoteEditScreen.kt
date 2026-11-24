@@ -24,6 +24,10 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.quicknotes.ui.theme.Spacing
 import kotlinx.coroutines.launch
 
+// SCREEN: create / edit a note. Route: NOTE_EDIT_ROUTE in ui/navigation/NavGraph.kt.
+// Reached from NotesListScreen (tap a card, or tap the + button).
+// onSave / onBack both pop back to the list (see NavGraph.kt).
+// Form state lives in NoteEditViewModel.kt, not in local useState-style state.
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NoteEditScreen(
@@ -65,7 +69,12 @@ fun NoteEditScreen(
                 label = { Text("Note") },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .weight(1f)
+                    .weight(1f),
+                supportingText = { Text("${uiState.snippet.length} characters") }
+                // TASK 6 — slot parameters: label / supportingText take a composable LAMBDA,
+                //   not a string. Like passing JSX as a prop: label={<Text>Note</Text>}.
+                // Updates live: each keystroke → onSnippetChange → ViewModel updates uiState
+                //   → Compose re-runs this screen with the new snippet → new length shown.
             )
             OutlinedTextField(
                 value = uiState.tag,
